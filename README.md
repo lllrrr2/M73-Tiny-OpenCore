@@ -1,14 +1,11 @@
 <div align="center">
-  
-  ### **If you would like to read a bit into the future of this OpenCore configuration, feel free to read [this notice](https://gist.github.com/UHDbits/6f91770a76fa728ba89faaa15b3b60d9), or read [this TLDR](/Resources/Documentation/Maintenance.md). Thanks for your support over the past year.**
 
   <img src="https://github.com/UHDbits/M73-Tiny-OpenCore/raw/main/Resources/Images/ThinkCentre.png" alt="Image of a Lenovo ThinkCentre M73 Tiny." width="400px"/>
   
-  # **OpenCore 0.9.4 for the Lenovo ThinkCentre M73 Tiny**
+  # **OpenCore 1.0.0 for the Lenovo ThinkCentre M73 Tiny**
   
-  [![OpenCore 0.9.4](https://img.shields.io/badge/OpenCore-0.9.4-004852)](https://github.com/acidanthera/OpenCorePkg)
-  [![macOS Big Sur 11.0 to Ventura 13.5](https://img.shields.io/badge/macOS-Big%20Sur%2011.0%20to%20Ventura%2013.5-67320A?logo=apple)](https://apple.com/macos/ventura)
-  [![Partially Supports: macOS 14 Sonoma](https://img.shields.io/badge/Partially%20Supports-macOS%20Sonoma%2014.0-7D1B35)](https://apple.com/macos/sonoma-preview)
+  [![OpenCore 1.0.0](https://img.shields.io/badge/OpenCore-1.0.0-004852)](https://github.com/acidanthera/OpenCorePkg)
+  [![macOS Big Sur 11.0 to Sonoma 14.5](https://img.shields.io/badge/macOS-Big%20Sur%2011.0%20to%20Sonoma%2014.5-7D1B35?logo=apple)](https://apple.com/macos/sonoma)
 
   [![Maintained? Partially.](https://img.shields.io/badge/Maintained%3F-Partially.-666600.svg)](/Resources/Documentation/Maintenance.md)
   
@@ -42,11 +39,11 @@
   | RAM | 2x8GB (16GB) of DDR3-1600 |
   | Storage | ADATA SU800 512GB SATA SSD |
   | Audio | Realtek ALC283 |
-  | External Display | HP ENVY 27 (3840x2160 @ 60Hz)
+  | External Display | Lenovo ThinkVision T24i-20 (1920x1080 @ 60Hz)
   | Ethernet | Intel Ethernet Connection I217-V |
   | Internal WiFi/Bluetooth | AzureWave AW-CE123H (BCM94352HMB) |
   
-  **If your system does not match these specifications (other than the not-important parts, like the external display), it is not guaranteed that this configuration will work for you. If you are unable to get it working, you can create an issue, and I will try to help you to the best of my ability.**
+  **If your system does not match these specifications, it is not guaranteed that this configuration will work for you. If you are unable to get it working, you can create an issue, and I will try to help you to the best of my ability.**
 
   ## Directions
   
@@ -60,7 +57,7 @@
   | 2 | Move the "EFI" folder from this repository to the "EFI" partition on macOS, to the root of your USB drive on Windows, or to the "OPENCORE" partition on Linux. Make sure to move the whole folder itself and not just the files inside the folder. |
   | 3 | [Modify your BIOS settings according to this document. Skip "VT-d" if you do not see it in your BIOS.](/Resources/Documentation/BIOSSettings.md) |
   | 4 | [Installation Process (Skip "Double checking your work". Check "OpenCore Multiboot Guide" if you want to multiboot.)](https://dortania.github.io/OpenCore-Install-Guide/installation/installation-process.html#booting-the-opencore-usb) |
-  | 5 | [**For Ventura users**, use OpenCore Legacy Patcher to get graphics acceleration.](/Resources/Documentation/OCLP.md) |
+  | 5 | [**For Ventura and Sonoma users**, use OpenCore Legacy Patcher to get graphics acceleration and WiFi connectivity.](/Resources/Documentation/OCLP.md) |
   | 6* | [Moving OpenCore from USB to macOS Drive (Skip the "Legacy" part at the bottom)](https://dortania.github.io/OpenCore-Post-Install/universal/oc2hdd.html) |
   | 7* | [Fixing iMessage and other services with OpenCore (This is extremely recommended even if you don't use iServices because otherwise, you will have a generic serial number, which isn't a great idea.)](https://dortania.github.io/OpenCore-Post-Install/universal/iservices.html) |
   | 8** | [**For Big Sur and Monterey users**, modify the OpenCore configuration to improve security.](/Resources/Documentation/Security.md) |
@@ -71,12 +68,9 @@
   **If you want to update OpenCore with a newer version of this configuration, just download the new EFI folder, mount the EFI partition, and copy the folder to the partition. Note, if you've made any changes to the configuration, make sure to remember them or save them somewhere because any changes made will be overwritten.**
 
   ### Updating OpenCore/macOS manually
-  **If you want to update OpenCore manually, you can follow [this guide](https://dortania.github.io/OpenCore-Post-Install/universal/update.html#updating-opencore) (harder to follow, but recommended and tells you how to update macOS), or follow [this guide](https://www.insanelymac.com/forum/topic/347035-guide-updating-and-maintaining-opencore-new-method/) (easier to follow, but not recommended.) If you want to update macOS 13 Ventura, follow [this guide here.](/Resources/Documentation/OCLP.md#before-updating-macos)**
+  **If you want to update OpenCore manually, you can follow [this guide](https://dortania.github.io/OpenCore-Post-Install/universal/update.html#updating-opencore) (harder to follow, but recommended and tells you how to update macOS), or follow [this guide](https://www.insanelymac.com/forum/topic/347035-guide-updating-and-maintaining-opencore-new-method/) (easier to follow, but not recommended.) If you want to update macOS 13 Ventura or macOS 14 Sonoma, follow [this guide here.](/Resources/Documentation/OCLP.md#before-updating-macos)**
 
   ## Known Issues
-  
-  ### macOS 14 Sonoma Support
-  **Because macOS 14 Sonoma does not support the hardware featured in this ThinkCentre, Sonoma support should be considered as in the "alpha" stages, and unusable as a daily driver. There are many issues with Sonoma, including the fact that Broadcom WiFi cards do not currently work and that Sonoma only has alpha support for graphics acceleration, which means it could be unstable. Please wait for further updates on Sonoma before using it as a daily driver on this ThinkCentre.**
 
   ### OpenCore Legacy Patcher Issues
   **Because macOS 13 Ventura and macOS 14 Sonoma do not officially support the hardware featured in this ThinkCentre, we have to use a tool called "OpenCore Legacy Patcher" to apply patches that allow us to use Ventura and Sonoma normally. Sadly, these patches do have some minor issues. To check the issues that affect this ThinkCentre, check [this link](https://github.com/dortania/OpenCore-Legacy-Patcher/issues/1008/) and look for "Haswell" in "Known Issues". As mentioned before, these bugs are quite minor and will not affect most people.**
@@ -92,6 +86,6 @@
 
   ![An image showing an example of icons going missing in macOS.](/Resources/Images/Missing%20Icons/DarkMissingIcons.png#gh-dark-mode-only) ![An image showing an example of icons going missing in macOS.](/Resources/Images/Missing%20Icons/LightMissingIcons.png#gh-light-mode-only)
   
-  [**Jump to Top**](#opencore-094-for-the-lenovo-thinkcentre-m73-tiny)
+  [**Jump to Top**](#opencore-100-for-the-lenovo-thinkcentre-m73-tiny)
 
 </div>
